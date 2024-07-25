@@ -1,17 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      AGREGAR NUEVA NOTICIA
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="datosForm">
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary">Título</ion-label>
+        <ion-input label-placement="floating" fill="solid" placeholder="Ingresa el título de la noticia" formControlName="titulo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Fecha</ion-label>
+        <ion-input label-placement="floating" fill="solid" placeholder="Ingresa la fecha de la noticia" formControlName="fecha"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Descripción</ion-label>
+        <ion-input class="campo-descripcion" label-placement="floating" fill="solid"
+          placeholder="Ingresa la Descripción de la noticia" formControlName="descripcion"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="agregarNoticia();">Enviar</ion-button>
+    </ion-list>
+  </form>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
 </ion-content>

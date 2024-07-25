@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NoticiasService } from '../servicios/noticias/noticias.service';
+import { INoticias } from '../interfaces/noticias.interface';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +9,20 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  noticias: INoticias[] = [];
+
+  constructor(private noticiasService: NoticiasService) { }
+
+  ngOnInit() {
+    this.noticiasService.obtenerNoticias().subscribe(data => {
+      this.noticias = data;
+    });
+  }
+
+  eliminarNoticia(titulo: string) {
+    this.noticiasService.eliminarNoticia(titulo).then(() => {
+      this.noticias = this.noticias.filter(noticia => noticia.titulo !== titulo);
+    });
+  }
 
 }
